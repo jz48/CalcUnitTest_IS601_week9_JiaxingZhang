@@ -10,7 +10,7 @@ class CsvReader:
 		# accumulate together and the error would occur.
 		self.data = []
 		with open(filepath) as text_data:
-			csv_data = csv.DictReader(text_data, delimiter=',')
+			csv_data = csv.DictReader(text_data)
 			for row in csv_data:
 				# print('row: ', row)
 				self.data.append(row)
