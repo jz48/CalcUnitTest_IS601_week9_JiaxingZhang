@@ -1,4 +1,5 @@
 import csv
+import pandas
 
 
 class CsvReader:
@@ -8,6 +9,7 @@ class CsvReader:
 		with open(filepath) as text_data:
 			csv_data = csv.DictReader(text_data, delimiter=',')
 			for row in csv_data:
+				# print('row: ', row)
 				self.data.append(row)
 		pass
 
