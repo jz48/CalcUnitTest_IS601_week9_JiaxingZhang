@@ -42,7 +42,7 @@ def multiplication(a, b):
 
 
 def division(a, b):
-	return a / b
+	return b / a
 
 
 def square(a):

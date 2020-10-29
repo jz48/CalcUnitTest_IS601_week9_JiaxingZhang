@@ -20,6 +20,7 @@ class MyTestCase(unittest.TestCase):
 
     def test_subtraction(self):
         print('---------------test subtraction------------------')
+        # find out bugs successfully
         test_data = CsvReader('./src/data/UnitTestSubtraction.csv').data
         # print(test_data)
         for row in test_data:
@@ -35,6 +36,21 @@ class MyTestCase(unittest.TestCase):
             # print(int(row['Value 1']), int(row['Value 2']), int(row['Result']))
             self.assertEqual(self.calculator.multiplication(int(row['Value 1']), int(row['Value 2'])), int(row['Result']))
             self.assertEqual(self.calculator.result, int(row['Result']))
+
+    def test_division(self):
+        print('---------------test division------------------')
+        # find out bugs successfully
+        test_data = CsvReader('./src/data/UnitTestDivision.csv').data
+        for row in test_data:
+            a = self.calculator.division(int(row['Value 1']), int(row['Value 2']))
+            b = str(float(row['Result']))
+            a = str(a)[:len(str(b))-1]
+            self.assertEqual(a, b[:-1])
+
+            a = self.calculator.result
+            b = str(float(row['Result']))
+            a = str(a)[:len(str(b))-1]
+            self.assertEqual(a, b[:-1])
 
     def test_results_property(self):
         self.assertEqual(self.calculator.result, 0)
