@@ -42,15 +42,11 @@ class MyTestCase(unittest.TestCase):
         # find out bugs successfully
         test_data = CsvReader('./src/data/UnitTestDivision.csv').data
         for row in test_data:
-            a = self.calculator.division(int(row['Value 1']), int(row['Value 2']))
-            b = str(float(row['Result']))
-            a = str(a)[:len(str(b))-1]
-            self.assertEqual(a, b[:-1])
+            a, b = transformFloat(self.calculator.division(int(row['Value 1']), int(row['Value 2'])), row['Result'])
+            self.assertEqual(a, b)
 
-            a = self.calculator.result
-            b = str(float(row['Result']))
-            a = str(a)[:len(str(b))-1]
-            self.assertEqual(a, b[:-1])
+            a, b = transformFloat(self.calculator.result, row['Result'])
+            self.assertEqual(a, b)
 
     def test_square(self):
         print('---------------test square------------------')
@@ -64,15 +60,11 @@ class MyTestCase(unittest.TestCase):
         # find out bugs successfully
         test_data = CsvReader('./src/data/UnitTestSquareRoot.csv').data
         for row in test_data:
-            a = self.calculator.root(int(row['Value 1']))
-            b = str(float(row['Result']))
-            a = str(a)[:len(str(b))-1]
-            self.assertEqual(a, b[:-1])
+            a, b = transformFloat(self.calculator.root(int(row['Value 1'])), row['Result'])
+            self.assertEqual(a, b)
 
-            a = self.calculator.result
-            b = str(float(row['Result']))
-            a = str(a)[:len(str(b))-1]
-            self.assertEqual(a, b[:-1])
+            a, b = transformFloat(self.calculator.result, row['Result'])
+            self.assertEqual(a, b)
 
     def test_results_property(self):
         self.assertEqual(self.calculator.result, 0)
@@ -80,7 +72,7 @@ class MyTestCase(unittest.TestCase):
 
 def transformFloat(a, b):
     a = str(a)[:len(str(b)) - 1]
-    b = str(b)[:-1]
+    b = b[:-1]
     return a, b
 
 
