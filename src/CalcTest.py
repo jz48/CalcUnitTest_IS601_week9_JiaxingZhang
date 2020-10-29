@@ -52,6 +52,13 @@ class MyTestCase(unittest.TestCase):
             a = str(a)[:len(str(b))-1]
             self.assertEqual(a, b[:-1])
 
+    def test_square(self):
+        print('---------------test square------------------')
+        test_data = CsvReader('./src/data/UnitTestSquare.csv').data
+        for row in test_data:
+            self.assertEqual(self.calculator.square(int(row['Value 1'])), int(row['Result']))
+            self.assertEqual(self.calculator.result, int(row['Result']))
+
     def test_results_property(self):
         self.assertEqual(self.calculator.result, 0)
 
