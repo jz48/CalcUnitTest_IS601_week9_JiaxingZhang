@@ -2,6 +2,6 @@ FROM python:3
 
 ADD src /src
 
-RUN pip install coverage pandas
+RUN pip install coverage
 
-CMD [ "python", "./src/CsvReaderTest.py" ]
+CMD [ "python", "./src/CalcTest.py" ]
