@@ -59,8 +59,29 @@ class MyTestCase(unittest.TestCase):
             self.assertEqual(self.calculator.square(int(row['Value 1'])), int(row['Result']))
             self.assertEqual(self.calculator.result, int(row['Result']))
 
+    def test_squareRoot(self):
+        print('---------------test square root------------------')
+        # find out bugs successfully
+        test_data = CsvReader('./src/data/UnitTestSquareRoot.csv').data
+        for row in test_data:
+            a = self.calculator.root(int(row['Value 1']))
+            b = str(float(row['Result']))
+            a = str(a)[:len(str(b))-1]
+            self.assertEqual(a, b[:-1])
+
+            a = self.calculator.result
+            b = str(float(row['Result']))
+            a = str(a)[:len(str(b))-1]
+            self.assertEqual(a, b[:-1])
+
     def test_results_property(self):
         self.assertEqual(self.calculator.result, 0)
+
+
+def transformFloat(a, b):
+    a = str(a)[:len(str(b)) - 1]
+    b = str(b)[:-1]
+    return a, b
 
 
 if __name__ == '__main__':
