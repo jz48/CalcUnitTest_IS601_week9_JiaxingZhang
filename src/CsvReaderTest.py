@@ -1,6 +1,5 @@
 import unittest
 from CsvReader import CsvReader, ClassFactory
-from pprint import pprint
 
 
 class MyTestCase(unittest.TestCase):
@@ -13,8 +12,8 @@ class MyTestCase(unittest.TestCase):
         self.assertIsInstance(people, list)
         test_class = ClassFactory('person', self.csv_reader.data[0])
         for person in people:
-            pprint(test_class, person)
-            pprint(person.__name__, test_class.__name__)
+            print(test_class, person)
+            print(person.__name__, test_class.__name__)
             self.assertEqual(person.__name__, test_class.__name__)
 
 
