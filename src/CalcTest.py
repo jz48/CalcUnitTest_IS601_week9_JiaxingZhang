@@ -27,6 +27,14 @@ class MyTestCase(unittest.TestCase):
             self.assertEqual(self.calculator.subtract(int(row['Value 1']), int(row['Value 2'])), int(row['Result']))
             self.assertEqual(self.calculator.result, int(row['Result']))
 
+    def test_multiplication(self):
+        print('---------------test multiplication------------------')
+        test_data = CsvReader('./src/data/UnitTestMultiplication.csv').data
+        # print(test_data)
+        for row in test_data:
+            # print(int(row['Value 1']), int(row['Value 2']), int(row['Result']))
+            self.assertEqual(self.calculator.multiplication(int(row['Value 1']), int(row['Value 2'])), int(row['Result']))
+            self.assertEqual(self.calculator.result, int(row['Result']))
 
     def test_results_property(self):
         self.assertEqual(self.calculator.result, 0)
